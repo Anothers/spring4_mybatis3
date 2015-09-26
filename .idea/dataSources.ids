@@ -1,0 +1,1233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - oms@localhost" uuid="6ecec07f-7172-44ca-b8a9-b71f5f3e2163">
+    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="OMS"/>
+    <table name="ACT_GE_BYTEARRAY" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEPLOYMENT_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="BYTES_" sqlType="LONGBLOB" precision="2147483647" scale="0" nullable="true" jdbcType="-4"/>
+      <column name="GENERATED_" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <foreign-key name="ACT_FK_BYTEARR_DEPL" columns="DEPLOYMENT_ID_" ref-table="ACT_RE_DEPLOYMENT" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="ACT_FK_MODEL_SOURCE" table="ACT_RE_MODEL" schema="" catalog="OMS" columns="EDITOR_SOURCE_VALUE_ID_"/>
+      <exported-key name="ACT_FK_MODEL_SOURCE_EXTRA" table="ACT_RE_MODEL" schema="" catalog="OMS" columns="EDITOR_SOURCE_EXTRA_VALUE_ID_"/>
+      <exported-key name="ACT_FK_JOB_EXCEPTION" table="ACT_RU_JOB" schema="" catalog="OMS" columns="EXCEPTION_STACK_ID_"/>
+      <exported-key name="ACT_FK_VAR_BYTEARRAY" table="ACT_RU_VARIABLE" schema="" catalog="OMS" columns="BYTEARRAY_ID_"/>
+      <index name="ACT_FK_BYTEARR_DEPL" unique="false" columns="DEPLOYMENT_ID_"/>
+    </table>
+    <table name="ACT_GE_PROPERTY" schema="" catalog="OMS" type="TABLE">
+      <column name="NAME_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="VALUE_" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="NAME_"/>
+    </table>
+    <table name="ACT_HI_ACTINST" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PROC_DEF_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EXECUTION_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ACT_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CALL_PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACT_NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACT_TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ASSIGNEE_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="START_TIME_" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="END_TIME_" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DURATION_" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <index name="ACT_IDX_HI_ACT_INST_END" unique="false" columns="END_TIME_"/>
+      <index name="ACT_IDX_HI_ACT_INST_EXEC" unique="false" columns="EXECUTION_ID_,ACT_ID_"/>
+      <index name="ACT_IDX_HI_ACT_INST_PROCINST" unique="false" columns="PROC_INST_ID_,ACT_ID_"/>
+      <index name="ACT_IDX_HI_ACT_INST_START" unique="false" columns="START_TIME_"/>
+    </table>
+    <table name="ACT_HI_ATTACHMENT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="USER_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESCRIPTION_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="URL_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CONTENT_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+    </table>
+    <table name="ACT_HI_COMMENT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TIME_" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="USER_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACTION_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MESSAGE_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FULL_MSG_" sqlType="LONGBLOB" precision="2147483647" scale="0" nullable="true" jdbcType="-4"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+    </table>
+    <table name="ACT_HI_DETAIL" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXECUTION_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACT_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VAR_TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TIME_" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="BYTEARRAY_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DOUBLE_" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="LONG_" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="TEXT_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TEXT2_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <index name="ACT_IDX_HI_DETAIL_ACT_INST" unique="false" columns="ACT_INST_ID_"/>
+      <index name="ACT_IDX_HI_DETAIL_NAME" unique="false" columns="NAME_"/>
+      <index name="ACT_IDX_HI_DETAIL_PROC_INST" unique="false" columns="PROC_INST_ID_"/>
+      <index name="ACT_IDX_HI_DETAIL_TASK_ID" unique="false" columns="TASK_ID_"/>
+      <index name="ACT_IDX_HI_DETAIL_TIME" unique="false" columns="TIME_"/>
+    </table>
+    <table name="ACT_HI_IDENTITYLINK" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="GROUP_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <index name="ACT_IDX_HI_IDENT_LNK_PROCINST" unique="false" columns="PROC_INST_ID_"/>
+      <index name="ACT_IDX_HI_IDENT_LNK_TASK" unique="false" columns="TASK_ID_"/>
+      <index name="ACT_IDX_HI_IDENT_LNK_USER" unique="false" columns="USER_ID_"/>
+    </table>
+    <table name="ACT_HI_PROCINST" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BUSINESS_KEY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_DEF_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="START_TIME_" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="END_TIME_" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DURATION_" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="START_USER_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="START_ACT_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="END_ACT_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SUPER_PROCESS_INSTANCE_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELETE_REASON_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <index name="ACT_UNIQ_HI_BUS_KEY" unique="true" columns="PROC_DEF_ID_,BUSINESS_KEY_"/>
+      <index name="PROC_INST_ID_" unique="true" columns="PROC_INST_ID_"/>
+      <index name="ACT_IDX_HI_PRO_I_BUSKEY" unique="false" columns="BUSINESS_KEY_"/>
+      <index name="ACT_IDX_HI_PRO_INST_END" unique="false" columns="END_TIME_"/>
+    </table>
+    <table name="ACT_HI_TASKINST" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PROC_DEF_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_DEF_KEY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXECUTION_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PARENT_TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESCRIPTION_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OWNER_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ASSIGNEE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="START_TIME_" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CLAIM_TIME_" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="END_TIME_" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="DURATION_" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="DELETE_REASON_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRIORITY_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DUE_DATE_" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="FORM_KEY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+    </table>
+    <table name="ACT_HI_VARINST" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXECUTION_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VAR_TYPE_" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="BYTEARRAY_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DOUBLE_" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="LONG_" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="TEXT_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TEXT2_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <index name="ACT_IDX_HI_PROCVAR_NAME_TYPE" unique="false" columns="NAME_,VAR_TYPE_"/>
+      <index name="ACT_IDX_HI_PROCVAR_PROC_INST" unique="false" columns="PROC_INST_ID_"/>
+    </table>
+    <table name="ACT_ID_GROUP" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <exported-key name="ACT_FK_MEMB_GROUP" table="ACT_ID_MEMBERSHIP" schema="" catalog="OMS" columns="GROUP_ID_"/>
+    </table>
+    <table name="ACT_ID_INFO" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="USER_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="KEY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VALUE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PASSWORD_" sqlType="LONGBLOB" precision="2147483647" scale="0" nullable="true" jdbcType="-4"/>
+      <column name="PARENT_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+    </table>
+    <table name="ACT_ID_MEMBERSHIP" schema="" catalog="OMS" type="TABLE">
+      <column name="USER_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="GROUP_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <primary-key name="PRIMARY" columns="USER_ID_,GROUP_ID_"/>
+      <foreign-key name="ACT_FK_MEMB_USER" columns="USER_ID_" ref-table="ACT_ID_USER" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_MEMB_GROUP" columns="GROUP_ID_" ref-table="ACT_ID_GROUP" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ACT_FK_MEMB_GROUP" unique="false" columns="GROUP_ID_"/>
+    </table>
+    <table name="ACT_ID_USER" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="FIRST_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EMAIL_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PWD_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PICTURE_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <exported-key name="ACT_FK_MEMB_USER" table="ACT_ID_MEMBERSHIP" schema="" catalog="OMS" columns="USER_ID_"/>
+    </table>
+    <table name="ACT_RE_DEPLOYMENT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CATEGORY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEPLOY_TIME_" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <exported-key name="ACT_FK_BYTEARR_DEPL" table="ACT_GE_BYTEARRAY" schema="" catalog="OMS" columns="DEPLOYMENT_ID_"/>
+      <exported-key name="ACT_FK_MODEL_DEPLOYMENT" table="ACT_RE_MODEL" schema="" catalog="OMS" columns="DEPLOYMENT_ID_"/>
+    </table>
+    <table name="ACT_RE_MODEL" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="KEY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CATEGORY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATE_TIME_" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="LAST_UPDATE_TIME_" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="VERSION_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="META_INFO_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEPLOYMENT_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EDITOR_SOURCE_VALUE_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EDITOR_SOURCE_EXTRA_VALUE_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <foreign-key name="ACT_FK_MODEL_DEPLOYMENT" columns="DEPLOYMENT_ID_" ref-table="ACT_RE_DEPLOYMENT" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_MODEL_SOURCE" columns="EDITOR_SOURCE_VALUE_ID_" ref-table="ACT_GE_BYTEARRAY" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_MODEL_SOURCE_EXTRA" columns="EDITOR_SOURCE_EXTRA_VALUE_ID_" ref-table="ACT_GE_BYTEARRAY" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ACT_FK_MODEL_DEPLOYMENT" unique="false" columns="DEPLOYMENT_ID_"/>
+      <index name="ACT_FK_MODEL_SOURCE" unique="false" columns="EDITOR_SOURCE_VALUE_ID_"/>
+      <index name="ACT_FK_MODEL_SOURCE_EXTRA" unique="false" columns="EDITOR_SOURCE_EXTRA_VALUE_ID_"/>
+    </table>
+    <table name="ACT_RE_PROCDEF" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CATEGORY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="KEY_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VERSION_" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="DEPLOYMENT_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RESOURCE_NAME_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DGRM_RESOURCE_NAME_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESCRIPTION_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HAS_START_FORM_KEY_" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="SUSPENSION_STATE_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <exported-key name="ACT_FK_EXE_PROCDEF" table="ACT_RU_EXECUTION" schema="" catalog="OMS" columns="PROC_DEF_ID_"/>
+      <exported-key name="ACT_FK_ATHRZ_PROCEDEF" table="ACT_RU_IDENTITYLINK" schema="" catalog="OMS" columns="PROC_DEF_ID_"/>
+      <exported-key name="ACT_FK_TASK_PROCDEF" table="ACT_RU_TASK" schema="" catalog="OMS" columns="PROC_DEF_ID_"/>
+      <index name="ACT_UNIQ_PROCDEF" unique="true" columns="KEY_,VERSION_"/>
+    </table>
+    <table name="ACT_RU_EVENT_SUBSCR" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="EVENT_TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EVENT_NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXECUTION_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACTIVITY_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CONFIGURATION_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATED_" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <foreign-key name="ACT_FK_EVENT_EXEC" columns="EXECUTION_ID_" ref-table="ACT_RU_EXECUTION" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ACT_FK_EVENT_EXEC" unique="false" columns="EXECUTION_ID_"/>
+      <index name="ACT_IDX_EVENT_SUBSCR_CONFIG_" unique="false" columns="CONFIGURATION_"/>
+    </table>
+    <table name="ACT_RU_EXECUTION" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="BUSINESS_KEY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PARENT_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_DEF_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SUPER_EXEC_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACT_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="IS_ACTIVE_" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="IS_CONCURRENT_" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="IS_SCOPE_" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="IS_EVENT_SCOPE_" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="SUSPENSION_STATE_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CACHED_ENT_STATE_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <foreign-key name="ACT_FK_EXE_PROCDEF" columns="PROC_DEF_ID_" ref-table="ACT_RE_PROCDEF" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_EXE_PARENT" columns="PARENT_ID_" ref-table="ACT_RU_EXECUTION" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_EXE_PROCINST" columns="PROC_INST_ID_" ref-table="ACT_RU_EXECUTION" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="ACT_FK_EXE_SUPER" columns="SUPER_EXEC_" ref-table="ACT_RU_EXECUTION" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="ACT_FK_EVENT_EXEC" table="ACT_RU_EVENT_SUBSCR" schema="" catalog="OMS" columns="EXECUTION_ID_"/>
+      <exported-key name="ACT_FK_EXE_PARENT" table="ACT_RU_EXECUTION" schema="" catalog="OMS" columns="PARENT_ID_"/>
+      <exported-key name="ACT_FK_EXE_PROCINST" table="ACT_RU_EXECUTION" schema="" catalog="OMS" columns="PROC_INST_ID_"/>
+      <exported-key name="ACT_FK_EXE_SUPER" table="ACT_RU_EXECUTION" schema="" catalog="OMS" columns="SUPER_EXEC_"/>
+      <exported-key name="ACT_FK_IDL_PROCINST" table="ACT_RU_IDENTITYLINK" schema="" catalog="OMS" columns="PROC_INST_ID_"/>
+      <exported-key name="ACT_FK_TASK_EXE" table="ACT_RU_TASK" schema="" catalog="OMS" columns="EXECUTION_ID_"/>
+      <exported-key name="ACT_FK_TASK_PROCINST" table="ACT_RU_TASK" schema="" catalog="OMS" columns="PROC_INST_ID_"/>
+      <exported-key name="ACT_FK_VAR_EXE" table="ACT_RU_VARIABLE" schema="" catalog="OMS" columns="EXECUTION_ID_"/>
+      <exported-key name="ACT_FK_VAR_PROCINST" table="ACT_RU_VARIABLE" schema="" catalog="OMS" columns="PROC_INST_ID_"/>
+      <index name="ACT_UNIQ_RU_BUS_KEY" unique="true" columns="PROC_DEF_ID_,BUSINESS_KEY_"/>
+      <index name="ACT_FK_EXE_PARENT" unique="false" columns="PARENT_ID_"/>
+      <index name="ACT_FK_EXE_PROCINST" unique="false" columns="PROC_INST_ID_"/>
+      <index name="ACT_FK_EXE_SUPER" unique="false" columns="SUPER_EXEC_"/>
+      <index name="ACT_IDX_EXEC_BUSKEY" unique="false" columns="BUSINESS_KEY_"/>
+    </table>
+    <table name="ACT_RU_IDENTITYLINK" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="GROUP_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="USER_ID_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_DEF_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <foreign-key name="ACT_FK_IDL_PROCINST" columns="PROC_INST_ID_" ref-table="ACT_RU_EXECUTION" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_ATHRZ_PROCEDEF" columns="PROC_DEF_ID_" ref-table="ACT_RE_PROCDEF" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_TSKASS_TASK" columns="TASK_ID_" ref-table="ACT_RU_TASK" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ACT_FK_IDL_PROCINST" unique="false" columns="PROC_INST_ID_"/>
+      <index name="ACT_FK_TSKASS_TASK" unique="false" columns="TASK_ID_"/>
+      <index name="ACT_IDX_ATHRZ_PROCEDEF" unique="false" columns="PROC_DEF_ID_"/>
+      <index name="ACT_IDX_IDENT_LNK_GROUP" unique="false" columns="GROUP_ID_"/>
+      <index name="ACT_IDX_IDENT_LNK_USER" unique="false" columns="USER_ID_"/>
+    </table>
+    <table name="ACT_RU_JOB" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LOCK_EXP_TIME_" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="LOCK_OWNER_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXCLUSIVE_" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="EXECUTION_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROCESS_INSTANCE_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_DEF_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RETRIES_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="EXCEPTION_STACK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="EXCEPTION_MSG_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DUEDATE_" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="REPEAT_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HANDLER_TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HANDLER_CFG_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <foreign-key name="ACT_FK_JOB_EXCEPTION" columns="EXCEPTION_STACK_ID_" ref-table="ACT_GE_BYTEARRAY" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ACT_FK_JOB_EXCEPTION" unique="false" columns="EXCEPTION_STACK_ID_"/>
+    </table>
+    <table name="ACT_RU_TASK" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" def="Jyc="/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="EXECUTION_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_DEF_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PARENT_TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DESCRIPTION_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_DEF_KEY_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OWNER_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ASSIGNEE_" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DELEGATION_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PRIORITY_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="CREATE_TIME_" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="DUE_DATE_" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="SUSPENSION_STATE_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <foreign-key name="ACT_FK_TASK_PROCDEF" columns="PROC_DEF_ID_" ref-table="ACT_RE_PROCDEF" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_TASK_EXE" columns="EXECUTION_ID_" ref-table="ACT_RU_EXECUTION" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_TASK_PROCINST" columns="PROC_INST_ID_" ref-table="ACT_RU_EXECUTION" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="ACT_FK_TSKASS_TASK" table="ACT_RU_IDENTITYLINK" schema="" catalog="OMS" columns="TASK_ID_"/>
+      <index name="ACT_FK_TASK_EXE" unique="false" columns="EXECUTION_ID_"/>
+      <index name="ACT_FK_TASK_PROCDEF" unique="false" columns="PROC_DEF_ID_"/>
+      <index name="ACT_FK_TASK_PROCINST" unique="false" columns="PROC_INST_ID_"/>
+      <index name="ACT_IDX_TASK_CREATE" unique="false" columns="CREATE_TIME_"/>
+    </table>
+    <table name="ACT_RU_VARIABLE" schema="" catalog="OMS" type="TABLE">
+      <column name="ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="REV_" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TYPE_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NAME_" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EXECUTION_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROC_INST_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TASK_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="BYTEARRAY_ID_" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DOUBLE_" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="LONG_" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="TEXT_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TEXT2_" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_"/>
+      <foreign-key name="ACT_FK_VAR_BYTEARRAY" columns="BYTEARRAY_ID_" ref-table="ACT_GE_BYTEARRAY" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_VAR_EXE" columns="EXECUTION_ID_" ref-table="ACT_RU_EXECUTION" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ACT_FK_VAR_PROCINST" columns="PROC_INST_ID_" ref-table="ACT_RU_EXECUTION" ref-schema="" ref-catalog="OMS" ref-columns="ID_" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="ACT_FK_VAR_BYTEARRAY" unique="false" columns="BYTEARRAY_ID_"/>
+      <index name="ACT_FK_VAR_EXE" unique="false" columns="EXECUTION_ID_"/>
+      <index name="ACT_FK_VAR_PROCINST" unique="false" columns="PROC_INST_ID_"/>
+      <index name="ACT_IDX_VARIABLE_TASK_ID" unique="false" columns="TASK_ID_"/>
+    </table>
+    <table name="OMS_DAY_DEAL" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="WTRQ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aeU5omY5pel5pyf"/>
+      <column name="ZQDM" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="6K+B5Yi45Luj56CB"/>
+      <column name="ZQMC" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="6K+B5Yi45ZCN56ew"/>
+      <column name="MM" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5Lmw5Y2W"/>
+      <column name="WTJG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aeU5omY6YeR6aKd"/>
+      <column name="WTSL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aeU5omY5pWw6YeP"/>
+      <column name="WTJE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aeU5omY6YeR6aKd"/>
+      <column name="CJJJ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5oiQ5Lqk5Z2H5Lu3"/>
+      <column name="CJSL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5oiQ5Lqk5pWw6YeP"/>
+      <column name="CJJE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5oiQ5Lqk6YeR6aKd"/>
+      <column name="WTSJ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aeU5omY5pWw6YeP"/>
+      <column name="CJSJ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5oiQ5Lqk6YeR6aKd"/>
+      <column name="SXF" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5omL57ut6LS5"/>
+      <column name="YHS" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5Y2w6Iqx56iO"/>
+      <column name="GHF" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="6L+H5oi36LS5"/>
+      <column name="QTFY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5YW25LuW6LS555So"/>
+      <column name="PLH" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5om56YeP5Y+3"/>
+      <column name="CREATE_TIME" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu65pel5pyf"/>
+      <column name="HTXH" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM5bqP5Y+3"/>
+      <column name="WTH" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5aeU5omY5Y+3"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_DAY_DEAL_DIFFERENCE" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="WTRQ" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aeU5omY5pel5pyf"/>
+      <column name="ZQDM" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="6K+B5Yi45Luj56CB"/>
+      <column name="ZQMC" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="6K+B5Yi45ZCN56ew"/>
+      <column name="MM" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5Lmw5Y2W"/>
+      <column name="CY_CJSL" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5beu5byC5oiQ5Lqk5pWw6YeP"/>
+      <column name="CY_CJJE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5beu5byC5oiQ5Lqk6YeR6aKd"/>
+      <column name="CY_YHS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5beu5byC5Y2w6Iqx56iO"/>
+      <column name="CY_GHF" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5beu5byC6L+H5oi36LS5"/>
+      <column name="CY_QTFY" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5beu5byC5YW25LuW6LS555So"/>
+      <column name="PLH" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5om56YeP5Y+3"/>
+      <column name="CREATE_TIME" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu65pel5pyf"/>
+      <column name="HTXH" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM5bqP5Y+3"/>
+      <column name="WTH" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5aeU5omY5Y+3"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_DAY_ENTRUST" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="WTRQ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQDM" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQMC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MM" sqlType="VARCHAR" precision="16" scale="0" nullable="true" jdbcType="12"/>
+      <column name="WTJG" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="WTSL" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="WTJE" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="WTZT" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJJG" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJSL" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CDSL" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="WTSJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CDSJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="JGFS" sqlType="VARCHAR" precision="16" scale="0" nullable="true" jdbcType="12"/>
+      <column name="HTXH" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="QRXX" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="WTXH" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATE_TIME" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_STANDARD_FEE_PARAM" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SH_BUY_STAMP_RATE" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SH_SHELL_STAMP_RATE" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SH_BUY_TRANS_RATE" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SH_SHELL_TRANS_RATE" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SH_BASE_BUY_TRANS" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="SH_BASE_SHELL_TRANS" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="SZ_BUY_STAMP_RATE" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SZ_SELL_STAMP_RATE" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="effective_date" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="create_date" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_ACCOUNT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="ACCT_NO" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT6LSm5Y+3IOWuouaIt+WPtys25L2N6aG65bqP5Y+377yM57O757uf6Ieq5Yqo55Sf5oiQ44CCCiAgICAgICAgICAgIOWGhemDqOi0puaIt+e8luWPtzk5OTk4ODg4"/>
+      <column name="CONTRACT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM57yW5Y+3"/>
+      <column name="CUST_NO" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5a6i5oi357yW5Y+3"/>
+      <column name="TRADE_UNIT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD57yW5Y+3IOS4gOWvueS4gO+8jOS4jeaUr+aMgeS4gOWvueWkmg=="/>
+      <column name="BAL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6LWE6YeR5L2Z6aKd"/>
+      <column name="AVAIL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Y+v55So6YeR6aKd"/>
+      <column name="FREEZ_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Ya757uT6YeR6aKd"/>
+      <column name="MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oyB5LuT5biC5YC8"/>
+      <column name="TOTAL_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oC76LWE5Lqn"/>
+      <column name="NET_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5YeA6LWE5Lqn"/>
+      <column name="CURRENT_RISK_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5b2T5YmN6aOO6Zmp5q+U5L6LIOaAu+i1hOS6py/lgJ/mrL7ph5Hpop0qMTAwJQ=="/>
+      <column name="ACCT_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi357G75Z6LIDEt5a6i5oi36LSm5oi3IDIt5YaF6YOo6LSm5oi3"/>
+      <column name="ACCT_STATUS" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi354q25oCBIDEt6aKE55yL44CBMi3mraPluLjjgIEzLeWGu+e7k+OAgTQt5riF566X5Lit44CBNS3nu5PmnZ8="/>
+      <column name="IS_VISUAL" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi35piv5ZCm5Y+v5pi+56S6IFkt5pivIE4t5ZCmCiAgICAgICAgICAgIOm7mOiupOaYvuekuu+8jOW9k+a4heeul+aXtu+8jOWmguaenOezu+e7n+iHquWKqOW5s+S7k++8jOWImeS4jeaYvuekug=="/>
+      <column name="NO_BUY_RISK" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="56aB5Lmw54q25oCBLemjjuaOpyBZLeaYryBOLeWQpgogICAgICAgICAgICDkurrlt6Uv57O757uf6Ieq5Yqo56aB5Lmw77yM6KGl5LuT5oiW5biC5YC85oGi5aSN5Yiw6aKE6K2m57q/5LmL5LiK5LiA5a6a5q+U5L6L5ZCO5ZCO6Ieq5Yqo5omT5byAOw=="/>
+      <column name="NO_BUY_INTEREST" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="56aB5Lmw54q25oCBLeasoOaBryBZLeaYryBOLeWQpg=="/>
+      <column name="NO_BUY_EXPIRE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="56aB5Lmw54q25oCBLei0puaIt+WIsOacnyBZLeaYryBOLeWQpg=="/>
+      <column name="NO_BUY_OTHER" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="56aB5Lmw54q25oCBLeWFtuS7liBZLeaYryBOLeWQpiDkurrlt6XmoLnmja7lrp7pmYXmg4XlhrXngbXmtLvorr7nva7npoHkubA="/>
+      <column name="IS_AUTO_OPEN" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5piv5ZCm6Ieq5Yqo5bmz5LuT5qCH6K+GIFkt5pivIE4t5ZCm"/>
+      <column name="FOUND_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="6LSm5oi35Yib5bu65pe26Ze0"/>
+      <column name="END_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="6LSm5oi357uT5p2f5pe26Ze0"/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+      <column name="VER_NO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54mI5pys5Y+3"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_ACCT_MANAGE_REQUIRE" schema="" catalog="OMS" type="TABLE">
+      <column name="SERIAL_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="5Lia5Yqh5Y+R55Sf5rWB5rC05Y+3IOacrOezu+e7n+S6p+eUnw=="/>
+      <column name="CUST_NO" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5a6i5oi357yW5Y+3"/>
+      <column name="CONTRACT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM57yW5Y+3"/>
+      <column name="ACCT_NO" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT6LSm5Y+3"/>
+      <column name="BUSI_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Lia5Yqh57G75Z6LIDEt55Sz6K+36YWN6LWE44CBMi3lop7phY3jgIEzLee8qemFjeOAgTQt6KGl5LuT44CBNS3nm4jliKnmj5Dlj5bjgIE2Lee7k+adn+OAgTct57ut57qm44CBOC3lj5jmm7TkuqTmmJPmiYvnu63otLnnjofjgIE5Lei0puWGheaJo+aBr++8iOenpuWGsOehruiupOS4gOacn+imgeWTquS6m++8ieOAgWEt6LWE6YeR57qi5Yay6JOd6KGl"/>
+      <column name="CUST_OCCUR_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5a6i5oi36LWE6YeR5Y+R55Sf6aKdIOeUs+ivt+mFjei1hOOAgeWinumFjeOAgeihpeS7k+OAgeebiOWIqeaPkOWPluOAgei0puWGheaJo+aBr+OAgee6ouWGsuiTneihpQ=="/>
+      <column name="LOAN_OCCUR_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5YCf5qy+5Y+R55Sf6aKdIOeUs+ivt+mFjei1hOOAgeWinumFjeOAgee8qemFjQ=="/>
+      <column name="NEW_CONTRACT_END_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5paw5ZCI5ZCM5Yiw5pyf5pel5pyf"/>
+      <column name="NEW_TRADE_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5paw5Lqk5piT5omL57ut6LS5546H"/>
+      <column name="NEW_EFFECT_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5paw5Lqk5piT5omL57ut6LS5546H55Sf5pWI5pel5pyf"/>
+      <column name="REQUIRE_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="6K+35rGC5pel5pyfIOS6pOaYk+aXpe+8jOW6lOmqjOivgeS4juacrOezu+e7n+S4gOiHtO+8jOWQpuWImeS4jeS6iOWkhOeQhg=="/>
+      <column name="REQUIRE_TIME" sqlType="CHAR" precision="6" scale="0" nullable="true" jdbcType="1" remarks="6K+35rGC5pe26Ze0IOW6lOmqjOivgeS4juacrOezu+e7n+ivr+W3ruW6lOWcqDLliIbpkp/ku6XlhoXvvIzlkKbliJnkuI3kuojlpITnkIY="/>
+      <column name="REQUIRE_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="6K+35rGC5rWB5rC05Y+3ICDor7fmsYLogIXnlJ/miJDvvIznlKjkuo7kuqTmmJPljLnphY0="/>
+      <column name="FOUND_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu65pe26Ze0"/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA5ZCO5pu05paw5pe26Ze0"/>
+      <column name="CHANNEL" sqlType="CHAR" precision="4" scale="0" nullable="true" jdbcType="1" remarks="5rig6YGTIOS6pOaYk+euoeeQhuezu+e7n+OAgeaKlemhvuS4muWKoeeuoeeQhuezu+e7nw=="/>
+      <column name="PROC_RESULT" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="MS3lpITnkIbmiJDlip/jgIEyLeWkhOeQhuWksei0peOAgTMt5aSE55CG5Lit44CBNC3lvoXlrqHmibnvvIjlr7notKbliY3lkIzmraXvvIkKICAgICAgICAgICAgMeOAgeaWsOivt+axguagh+iusOS4uuKAnOWkhOeQhuS4reKAneW5tmNvbW1pdAogICAgICAgICAgICAy44CB5aSE55CG5a6M5oiQ5ZCO77yM5qCH6K6w5Li65a6e6ZmF5aSE55CG57uT5p6c77yM5bm25LiO5aSE55CG6YC76L6R5LiA6LW3Y29tbWl0CiAgICAgICAgICAgIDPjgIHigJzlvoXlrqHmibnigJ3nirbmgIHlnKjmn6Xor6Lml7bjgIHmiJbml6Xnu4jlr7notKbliY3mm7TmlrDkuLrlrp7pmYXlpITnkIbnu5PmnpzjgILlpoLmnpzml6Xnu4jml7botYTph5Hlj5jliqjor7fmsYLku43mnKrlrqHmibnvvIzop4bkuLrigJzlrqHmibnmnKrpgJrov4figJ3vvIzlsIbmnKzor7fmsYLkuI7otYTph5HmmI7nu4bkuIDotbfnva7kuLrlpLHotKUKICAgICAgICAgICAgNOOAgeS6pOaYk+ezu+e7n+WPquiDveWkhOeQhuacrOKAnOS6pOaYk+aXpeKAneiMg+WbtOWGheeahOivt+axgg=="/>
+      <column name="RESULT_CODE" sqlType="CHAR" precision="5" scale="0" nullable="true" jdbcType="1" remarks="5ZON5bqU56CB"/>
+      <column name="RESULT_MSG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aSE55CG57uT5p6c5o+P6L+w"/>
+      <primary-key name="PRIMARY" columns="SERIAL_NO"/>
+    </table>
+    <table name="OMS_TB_BAN_BUY" schema="" catalog="OMS" type="TABLE">
+      <column name="SHARES_CODE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SHARES_NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="SHARES_CODE"/>
+    </table>
+    <table name="OMS_TB_BLACK_LIST" schema="" catalog="OMS" type="TABLE">
+      <column name="ACCT_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ACCT_NO"/>
+    </table>
+    <table name="OMS_TB_CONTRACT_RATIO" schema="" catalog="OMS" type="TABLE">
+      <column name="CONTRACT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5YCf5qy+5ZCI5ZCM57yW5Y+3"/>
+      <column name="EFFECT_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="55Sf5pWI5pel5pyf"/>
+      <column name="RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5omL57ut6LS5546HIOS4h+WIhuS5i1g="/>
+    </table>
+    <table name="OMS_TB_CUSTOMER" schema="" catalog="OMS" type="TABLE">
+      <column name="CUST_NO" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1" remarks="5a6i5oi357yW5Y+344CC5YWo57O757uf57uf5LiA77yM55m75b2V55So44CCM+S9jeacuuaehOWPtys15L2N6aG65bqP5Y+377yM57O757uf55Sf5oiQ44CC"/>
+      <column name="CUST_NAME" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="5a6i5oi35aeT5ZCN"/>
+      <column name="ID_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="6K+B5Lu257G75Z6LIDEt6Lqr5Lu96K+BIDIt5riv5r6z5Y+w6K+BCiAgICAgICAgICAgIOaUr+aMgei6q+S7veivgeOAgea4r+a+s+WPsOivge+8jOivpeWtl+auteS6pOaYk+ezu+e7n+ayoeeUqO+8jOS4jeiDvemHjeWkjQ=="/>
+      <column name="ID_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="6K+B5Lu25Y+356CB"/>
+      <column name="PHONE_NO" sqlType="VARCHAR" precision="11" scale="0" nullable="false" jdbcType="12" remarks="5omL5py65Y+3IOeZu+W9leeUqA=="/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="55S15a2Q6YKu566x"/>
+      <column name="TRADE_PWD" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="5Lqk5piT5a+G56CBIOm7mOiupOivgeS7tuWPt+eggeWQjjbkvY0="/>
+      <column name="CERT_DN" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12" remarks="6K+B5LmmRE4="/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo"/>
+      <column name="CUST_STATE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="55So5oi354q25oCBIDEt5q2j5bi4IDIt6ZSB5a6a"/>
+      <column name="IS_SERVICING" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5piv5ZCm5Zyo57u05oqk5LitIFkt5pivIE4t5ZCmIOS/ruaUueaVsOaNruWuoeaguOa1geeoi+S4rQ=="/>
+      <column name="CHANNEL" sqlType="VARCHAR" precision="4" scale="0" nullable="false" jdbcType="12" remarks="5Yib5bu65rig6YGTIOacrOezu+e7n+OAgeaKlemhvueuoeeQhuezu+e7nw=="/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+      <column name="VER_NO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54mI5pys5Y+3"/>
+      <primary-key name="PRIMARY" columns="CUST_NO"/>
+    </table>
+    <table name="OMS_TB_DEAL_TRANS" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="XT_ENTRUST_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TRADE_ENTRUST_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TRADE_DEAL_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TRANS_ACCT_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DEAL_DATE" sqlType="VARCHAR" precision="4" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DEAL_TIME" sqlType="VARCHAR" precision="6" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SECURITIES_CODE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SECURITIES_NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="OPER_TYPE" sqlType="VARCHAR" precision="2" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DEAL_COUNT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="DEAL_FUND" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="POST_FUND" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="XT_SERVICE_CHARGE" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="SECURITIES_COMMISSION" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="STAMP_DUTY" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="TRANSFER_FEE" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="OTHER_FEE" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="TRADE_MARKET" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SUB_ACCT_NO" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5a2Q6LSm5oi3"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_LOAN_CONTRACT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="CONT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM57yW5Y+3IOmVv+W6puOAgeeUn+aIkOinhOWImeiuqeenpuWGsOWumg=="/>
+      <column name="CUST_NO" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5a6i5oi357yW5Y+3"/>
+      <column name="FUND_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="6LWE6YeR5q+U5L6LIOS4i+aLieWIl+ihqOmAieaLqQ=="/>
+      <column name="BEGINNING_PRINCIPAL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5pyf5Yid5pys6YeR6YeR6aKd"/>
+      <column name="BEGINNING_LOAN_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5pyf5Yid5YCf5qy+6YeR6aKd"/>
+      <column name="CURRENT_PRINCIPAL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5b2T5YmN5pys6YeR6YeR6aKd"/>
+      <column name="CURRENT_LOAN_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5b2T5YmN5YCf5qy+6YeR6aKd"/>
+      <column name="EARLY_EARNING_LINE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6aKE6K2m57q/"/>
+      <column name="OPEN_LINE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5bmz5LuT57q/"/>
+      <column name="BEGINNING_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5ZCI5ZCM5byA5aeL5pel5pyf"/>
+      <column name="ENDING_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5ZCI5ZCM5Yiw5pyf5pel5pyf"/>
+      <column name="REAL_ENDING_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5ZCI5ZCM5a6e6ZmF57uT5p2f5pel5pyf"/>
+      <column name="CONTRACT_STATUS" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5ZCI5ZCM54q25oCBIDEt5q2j5bi4IDIt5riF566X5LitIDMt57uT5p2f"/>
+      <column name="FOUND_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM5Yib5bu65pe26Ze0"/>
+      <column name="IS_SERVICING" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5piv5ZCm5Zyo57u05oqk5LitIFkt5pivIE4t5ZCmIOS/ruaUueaVsOaNruWuoeaguOa1geeoi+S4rQ=="/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+      <column name="VER_NO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54mI5pys5Y+3"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_LOCAL_CHECK" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CHECK_DATE" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="证券代码" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="证券名称" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TRADE_ENTRUST_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="XT_ENTRUST_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TRADE_DEAL_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TRADE_OPER_TYPE" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="XT_OPER_TYPE" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TRADE_DEAL_COUNT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="XT_DEAL_COUNT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TRADE_GET_COUNT" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="XT_POST_COUNT" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="TRADE_DEAL_FUND" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="XT_DEAL_FUND" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_RATIONED_SHARES" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CUST_NO" sqlType="VARCHAR" precision="8" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ACCT_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="RATIONED_CODE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SHARES_CODE" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="SHARES_NAME" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RATIONED_COUNT" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="RATIONED_POWER" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="YEAR" sqlType="CHAR" precision="4" scale="0" nullable="true" jdbcType="1"/>
+      <column name="RATIONED_STATUS" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="CREATE_TIME" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="UPDATE_TIME" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="OMS_TB_SUB_ACCOUNT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="ACCT_NO" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT6LSm5Y+3IOWuouaIt+WPtys25L2N6aG65bqP5Y+377yM57O757uf6Ieq5Yqo55Sf5oiQ44CCCiAgICAgICAgICAgIOWGhemDqOi0puaIt+e8luWPtzk5OTk4ODg4"/>
+      <column name="SUB_ACCT_NO" sqlType="VARCHAR" precision="69" scale="0" nullable="true" jdbcType="12" remarks="5a2Q6LSm5oi357yW5Y+3"/>
+      <column name="CONTRACT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM57yW5Y+3"/>
+      <column name="CUST_NO" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5a6i5oi357yW5Y+3"/>
+      <column name="TRADE_UNIT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD57yW5Y+3IOS4gOWvueS4gO+8jOS4jeaUr+aMgeS4gOWvueWkmg=="/>
+      <column name="BAL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6LWE6YeR5L2Z6aKd"/>
+      <column name="AVAIL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Y+v55So6YeR6aKd"/>
+      <column name="FREEZ_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Ya757uT6YeR6aKd"/>
+      <column name="MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oyB5LuT5biC5YC8"/>
+      <column name="TOTAL_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oC76LWE5Lqn"/>
+      <column name="NET_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5YeA6LWE5Lqn"/>
+      <column name="CURRENT_RISK_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5b2T5YmN6aOO6Zmp5q+U5L6LIOaAu+i1hOS6py/lgJ/mrL7ph5Hpop0qMTAwJQ=="/>
+      <column name="ACCT_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi357G75Z6LIDEt5a6i5oi36LSm5oi3IDIt5YaF6YOo6LSm5oi3"/>
+      <column name="ACCT_STATUS" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi354q25oCBIDEt6aKE55yL44CBMi3mraPluLjjgIEzLeWGu+e7k+OAgTQt5riF566X5Lit44CBNS3nu5PmnZ8="/>
+      <column name="TRADE_PRIORITY" sqlType="VARBINARY" precision="16" scale="0" nullable="true" jdbcType="-3" remarks="6K+B5Yi45Lqk5piT5oyJ5LyY5YWI57qn6aG65bqP5omn6KGM77yM5b+F6aG76K6+572u5LiU5LiN6IO96YeN5aSN"/>
+      <column name="LOAN_PRIORITY" sqlType="VARBINARY" precision="16" scale="0" nullable="true" jdbcType="-3" remarks="5YCf5qy+6YeR6aKd"/>
+      <column name="CLIENT_MONEY" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5a6i5oi36YeR6aKd"/>
+      <column name="IS_AUTO_OPEN" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5piv5ZCm6Ieq5Yqo5bmz5LuT5qCH6K+GIFkt5pivIE4t5ZCm"/>
+      <column name="FOUND_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="6LSm5oi35Yib5bu65pe26Ze0"/>
+      <column name="END_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="6LSm5oi357uT5p2f5pe26Ze0"/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+      <column name="VER_NO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54mI5pys5Y+3"/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_SUB_ACCOUNT_SNAPSHOT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="ACCT_NO" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT6LSm5Y+3IOWuouaIt+WPtys25L2N6aG65bqP5Y+377yM57O757uf6Ieq5Yqo55Sf5oiQ44CCCiAgICAgICAgICAgIOWGhemDqOi0puaIt+e8luWPtzk5OTk4ODg4"/>
+      <column name="SUB_ACCT_NO" sqlType="VARCHAR" precision="69" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CONTRACT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM57yW5Y+3"/>
+      <column name="CUST_NO" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5a6i5oi357yW5Y+3"/>
+      <column name="TRADE_UNIT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD57yW5Y+3IOS4gOWvueS4gO+8jOS4jeaUr+aMgeS4gOWvueWkmg=="/>
+      <column name="BAL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6LWE6YeR5L2Z6aKd"/>
+      <column name="AVAIL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Y+v55So6YeR6aKd"/>
+      <column name="FREEZ_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Ya757uT6YeR6aKd"/>
+      <column name="MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oyB5LuT5biC5YC8"/>
+      <column name="TOTAL_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oC76LWE5Lqn"/>
+      <column name="NET_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5YeA6LWE5Lqn"/>
+      <column name="CURRENT_RISK_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5b2T5YmN6aOO6Zmp5q+U5L6LIOaAu+i1hOS6py/lgJ/mrL7ph5Hpop0qMTAwJQ=="/>
+      <column name="ACCT_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi357G75Z6LIDEt5a6i5oi36LSm5oi3IDIt5YaF6YOo6LSm5oi3"/>
+      <column name="ACCT_STATUS" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi354q25oCBIDEt6aKE55yL44CBMi3mraPluLjjgIEzLeWGu+e7k+OAgTQt5riF566X5Lit44CBNS3nu5PmnZ8="/>
+      <column name="TRADE_PRIORITY" sqlType="VARBINARY" precision="16" scale="0" nullable="true" jdbcType="-3" remarks="6K+B5Yi45Lqk5piT5oyJ5LyY5YWI57qn6aG65bqP5omn6KGM77yM5b+F6aG76K6+572u5LiU5LiN6IO96YeN5aSN"/>
+      <column name="LOAN_PRIORITY" sqlType="VARBINARY" precision="16" scale="0" nullable="true" jdbcType="-3" remarks="5YCf5qy+6YeR6aKd"/>
+      <column name="CLIENT_MONEY" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5a6i5oi36YeR6aKd"/>
+      <column name="IS_AUTO_OPEN" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5piv5ZCm6Ieq5Yqo5bmz5LuT5qCH6K+GIFkt5pivIE4t5ZCm"/>
+      <column name="FOUND_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="6LSm5oi35Yib5bu65pe26Ze0"/>
+      <column name="END_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="6LSm5oi357uT5p2f5pe26Ze0"/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+      <column name="VER_NO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54mI5pys5Y+3"/>
+      <column name="SNAPSHOT_DATEA" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5b+r54Wn5pel5pyf"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_TRADE_UNIT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD57yW5Y+3"/>
+      <column name="UNIT_NAME" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD5ZCN56ew"/>
+      <column name="BEGINNING_SCALE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5pyf5Yid6KeE5qih"/>
+      <column name="TOTAL_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oC76LWE5LqnIOWNleWFg+aAu+i1hOS6pz3lj6/nlKjotYTph5Er5Lmw5YWl5Ya757uTK+ivgeWIuOW4guWAvA=="/>
+      <column name="AVAIL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Y2V5YWD5Y+v55So6LWE6YeRPeWuouaIt+WPr+eUqOi1hOmHkSvpl7Lnva7otYTph5E="/>
+      <column name="BUY_FROZEN" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Lmw5YWl5Ya757uT"/>
+      <column name="MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6K+B5Yi45biC5YC8IOWNleWFg+ivgeWIuOW4guWAvD3oh6rokKXluILlgLwr5a6i5oi35biC5YC8"/>
+      <column name="SELF_MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6Ieq6JCl6K+B5Yi45biC5YC8IOWGhemDqOi0puaIt+W4guWAvA=="/>
+      <column name="CUST_MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5a6i5oi36K+B5Yi45biC5YC8IOWuouaIt+S6pOaYk+i0puaIt+ivgeWIuOW4guWAvA=="/>
+      <column name="CUST_AVAIL_FUNDS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5a6i5oi35Y+v55So6LWE6YeRIOWuouaIt+S6pOaYk+i0puaIt+WPr+eUqOi1hOmHkQ=="/>
+      <column name="IDLE_FUNDS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6Zey572u6LWE6YeR"/>
+      <column name="IDLE_FUNDS_RATE" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="6Zey572u6LWE6YeR546H"/>
+      <column name="FUND_UTILIZATION_RATE" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="6LWE6YeR5L2/55So546H"/>
+      <column name="OVERFLOW_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5rqi5Ye65q+U5L6LIOenpuWGsOaPkOS+m+WFrOW8j++8jOacgOmrmOWPr+a6ouWHuuavlOS+iw=="/>
+      <column name="UNIT_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Y2V5YWD57G75Z6LIDEt5Lye5b2i5Y2V5YWDIDIt54us56uL5Y2V5YWD"/>
+      <column name="TRUST_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lye5b2i5L+h5omY57yW5Y+3"/>
+      <column name="BEGIN_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5Y2V5YWD5byA5aeL5pel5pyf"/>
+      <column name="END_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5Y2V5YWD57uT5p2f5pel5pyf"/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+      <column name="VER_NO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54mI5pys5Y+3"/>
+      <column name="PID" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5aSH55So5Li76ZSu"/>
+      <column name="PROCESS_INSTANCE_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="5rWB56iL5a6e5L6LSUQ="/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_TRANS_ACCT_FUND" schema="" catalog="OMS" type="TABLE">
+      <column name="TRANS_NO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CUST_NO" sqlType="VARCHAR" precision="8" scale="0" nullable="false" jdbcType="12"/>
+      <column name="AGREEMENT_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TRANS_ACCT_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="POST_DATE" sqlType="VARCHAR" precision="4" scale="0" nullable="false" jdbcType="12"/>
+      <column name="POST_TIME" sqlType="VARCHAR" precision="6" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FUND_TYPE" sqlType="VARCHAR" precision="2" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TRANS_FUND" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="BUSSI_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TRANS_SYS_APP_STAT" sqlType="VARCHAR" precision="2" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATE_TIME" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="UPDATE_TIME" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="TRANS_NO"/>
+    </table>
+    <table name="OMS_TB_TRUST_CHECK" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CHECK_DATE" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="TRADE_ENTRUST_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="XT_ENTRUST_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TRADE_DEAL_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TRADE_OPER_TYPE" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="XT_OPER_TYPE" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="TRADE_DEAL_COUNT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="XT_DEAL_COUNT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="TRADE_GET_COUNT" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="XT_POST_COUNT" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="TRADE_DEAL_FUND" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="XT_DEAL_FUND" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_UMBRELLA_TRUST" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="TRUST_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lye5b2i5L+h5omY57yW5Y+3"/>
+      <column name="TRUST_NAME" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12" remarks="5Lye5b2i5L+h5omY5ZCN56ew"/>
+      <column name="TRUST_COMPANY" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12" remarks="5L+h5omY5YWs5Y+4"/>
+      <column name="BROKER" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12" remarks="5Yi45ZWG"/>
+      <column name="BROKER_COMM_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5Yi45ZWG5L2j6YeR546H"/>
+      <column name="SH_A_STOCK_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5LiK5rW3QeiCoeiCoeS4nOS7o+eggQ=="/>
+      <column name="SZ_A_STOCK_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5rex5ZyzQeiCoeiCoeS4nOS7o+eggQ=="/>
+      <column name="BEGIN_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5byA5aeL5pel5pyf"/>
+      <column name="END_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="57uT5p2f5pel5pyf"/>
+      <column name="PID" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5aSH55So5Li76ZSu"/>
+      <column name="PROCESS_INSTANCE_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="5rWB56iL5a6e5L6LSUQ="/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA5ZCO5pON5L2c5pe26Ze0"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_UNIT_FUND_FLOW" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="TRUST_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lye5b2i5L+h5omY57yW5Y+3IOS8nuW9ouWNleWFg+aJjeacieivpeWtl+auteWAvA=="/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD57yW5Y+3"/>
+      <column name="FLOW_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Y2V5YWD6LWE6YeR5Y+Y5Yqo77yaMS3ljZXlhYPotYTph5Hov73liqDjgIEyLeWNleWFg+i1hOmHkeaUtuWbnu+8iOmcgOimgeWkjeaguO+8iQ=="/>
+      <column name="OCCUR_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Y+R55Sf6aKdICDov73liqDvvIjmraPlgLzvvInvvJvmlLblm57vvIjotJ/lgLzvvIk="/>
+      <column name="OCCUR_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5Lia5Yqh5Y+R55Sf5pel5pyf"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo"/>
+      <column name="FOUND_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu65pe26Ze0"/>
+      <column name="PID" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROCESS_INSTANCE_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="5rWB56iL5a6e5L6LSUQ="/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TB_WHITE_LIST" schema="" catalog="OMS" type="TABLE">
+      <column name="ACCT_NO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ACCT_NO"/>
+    </table>
+    <table name="OMS_TH_ACCOUNT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="ACCT_NO" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT6LSm5Y+3IOWuouaIt+WPtys25L2N6aG65bqP5Y+377yM57O757uf6Ieq5Yqo55Sf5oiQ44CCCiAgICAgICAgICAgIOWGhemDqOi0puaIt+e8luWPtzk5OTk4ODg4"/>
+      <column name="CONTRACT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM57yW5Y+3"/>
+      <column name="CUST_NO" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5a6i5oi357yW5Y+3"/>
+      <column name="TRADE_UNIT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD57yW5Y+3IOS4gOWvueS4gO+8jOS4jeaUr+aMgeS4gOWvueWkmg=="/>
+      <column name="BAL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6LWE6YeR5L2Z6aKd"/>
+      <column name="AVAIL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Y+v55So6YeR6aKd"/>
+      <column name="FREEZ_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Ya757uT6YeR6aKd"/>
+      <column name="MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oyB5LuT5biC5YC8"/>
+      <column name="TOTAL_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oC76LWE5Lqn"/>
+      <column name="NET_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5YeA6LWE5Lqn"/>
+      <column name="CURRENT_RISK_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5b2T5YmN6aOO6Zmp5q+U5L6LIOaAu+i1hOS6py/lgJ/mrL7ph5Hpop0qMTAwJQ=="/>
+      <column name="ACCT_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi357G75Z6LIDEt5a6i5oi36LSm5oi3IDIt5YaF6YOo6LSm5oi3"/>
+      <column name="ACCT_STATUS" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi354q25oCBIDEt6aKE55yL44CBMi3mraPluLjjgIEzLeWGu+e7k+OAgTQt5riF566X5Lit44CBNS3nu5PmnZ8="/>
+      <column name="IS_VISUAL" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="6LSm5oi35piv5ZCm5Y+v5pi+56S6IFkt5pivIE4t5ZCmCiAgICAgICAgICAgIOm7mOiupOaYvuekuu+8jOW9k+a4heeul+aXtu+8jOWmguaenOezu+e7n+iHquWKqOW5s+S7k++8jOWImeS4jeaYvuekug=="/>
+      <column name="NO_BUY_RISK" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="56aB5Lmw54q25oCBLemjjuaOpyBZLeaYryBOLeWQpgogICAgICAgICAgICDkurrlt6Uv57O757uf6Ieq5Yqo56aB5Lmw77yM6KGl5LuT5oiW5biC5YC85oGi5aSN5Yiw6aKE6K2m57q/5LmL5LiK5LiA5a6a5q+U5L6L5ZCO5ZCO6Ieq5Yqo5omT5byAOw=="/>
+      <column name="NO_BUY_INTEREST" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="56aB5Lmw54q25oCBLeasoOaBryBZLeaYryBOLeWQpg=="/>
+      <column name="NO_BUY_EXPIRE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="56aB5Lmw54q25oCBLei0puaIt+WIsOacnyBZLeaYryBOLeWQpg=="/>
+      <column name="NO_BUY_OTHER" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="56aB5Lmw54q25oCBLeWFtuS7liBZLeaYryBOLeWQpiDkurrlt6XmoLnmja7lrp7pmYXmg4XlhrXngbXmtLvorr7nva7npoHkubA="/>
+      <column name="IS_AUTO_OPEN" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5piv5ZCm6Ieq5Yqo5bmz5LuT5qCH6K+GIFkt5pivIE4t5ZCm"/>
+      <column name="FOUND_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="6LSm5oi35Yib5bu65pe26Ze0"/>
+      <column name="END_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="6LSm5oi357uT5p2f5pe26Ze0"/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+      <column name="VER_NO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54mI5pys5Y+3"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TH_ACCT_MANAGE_REQUIRE" schema="" catalog="OMS" type="TABLE">
+      <column name="SERIAL_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="5Lia5Yqh5Y+R55Sf5rWB5rC05Y+3IOacrOezu+e7n+S6p+eUnw=="/>
+      <column name="CUST_NO" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5a6i5oi357yW5Y+3"/>
+      <column name="CONTRACT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5ZCI5ZCM57yW5Y+3"/>
+      <column name="ACCT_NO" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT6LSm5Y+3"/>
+      <column name="BUSI_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Lia5Yqh57G75Z6LIDEt55Sz6K+36YWN6LWE44CBMi3lop7phY3jgIEzLee8qemFjeOAgTQt6KGl5LuT44CBNS3nm4jliKnmj5Dlj5bjgIE2Lee7k+adn+OAgTct57ut57qm44CBOC3lj5jmm7TkuqTmmJPmiYvnu63otLnnjofjgIE5Lei0puWGheaJo+aBr++8iOenpuWGsOehruiupOS4gOacn+imgeWTquS6m++8ieOAgWEt6LWE6YeR57qi5Yay6JOd6KGl"/>
+      <column name="CUST_OCCUR_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5a6i5oi36LWE6YeR5Y+R55Sf6aKdIOeUs+ivt+mFjei1hOOAgeWinumFjeOAgeihpeS7k+OAgeebiOWIqeaPkOWPluOAgei0puWGheaJo+aBr+OAgee6ouWGsuiTneihpQ=="/>
+      <column name="LOAN_OCCUR_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5YCf5qy+5Y+R55Sf6aKdIOeUs+ivt+mFjei1hOOAgeWinumFjeOAgee8qemFjQ=="/>
+      <column name="NEW_CONTRACT_END_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5paw5ZCI5ZCM5Yiw5pyf5pel5pyf"/>
+      <column name="NEW_TRADE_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5paw5Lqk5piT5omL57ut6LS5546H"/>
+      <column name="NEW_EFFECT_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5paw5Lqk5piT5omL57ut6LS5546H55Sf5pWI5pel5pyf"/>
+      <column name="REQUIRE_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="6K+35rGC5pel5pyfIOS6pOaYk+aXpe+8jOW6lOmqjOivgeS4juacrOezu+e7n+S4gOiHtO+8jOWQpuWImeS4jeS6iOWkhOeQhg=="/>
+      <column name="REQUIRE_TIME" sqlType="CHAR" precision="6" scale="0" nullable="true" jdbcType="1" remarks="6K+35rGC5pe26Ze0IOW6lOmqjOivgeS4juacrOezu+e7n+ivr+W3ruW6lOWcqDLliIbpkp/ku6XlhoXvvIzlkKbliJnkuI3kuojlpITnkIY="/>
+      <column name="REQUIRE_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="6K+35rGC5rWB5rC05Y+3ICDor7fmsYLogIXnlJ/miJDvvIznlKjkuo7kuqTmmJPljLnphY0="/>
+      <column name="FOUND_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu65pe26Ze0"/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA5ZCO5pu05paw5pe26Ze0"/>
+      <column name="CHANNEL" sqlType="CHAR" precision="4" scale="0" nullable="true" jdbcType="1" remarks="5rig6YGTIOS6pOaYk+euoeeQhuezu+e7n+OAgeaKlemhvuS4muWKoeeuoeeQhuezu+e7nw=="/>
+      <column name="PROC_RESULT" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="MS3lpITnkIbmiJDlip/jgIEyLeWkhOeQhuWksei0peOAgTMt5aSE55CG5Lit44CBNC3lvoXlrqHmibnvvIjlr7notKbliY3lkIzmraXvvIkKICAgICAgICAgICAgMeOAgeaWsOivt+axguagh+iusOS4uuKAnOWkhOeQhuS4reKAneW5tmNvbW1pdAogICAgICAgICAgICAy44CB5aSE55CG5a6M5oiQ5ZCO77yM5qCH6K6w5Li65a6e6ZmF5aSE55CG57uT5p6c77yM5bm25LiO5aSE55CG6YC76L6R5LiA6LW3Y29tbWl0CiAgICAgICAgICAgIDPjgIHigJzlvoXlrqHmibnigJ3nirbmgIHlnKjmn6Xor6Lml7bjgIHmiJbml6Xnu4jlr7notKbliY3mm7TmlrDkuLrlrp7pmYXlpITnkIbnu5PmnpzjgILlpoLmnpzml6Xnu4jml7botYTph5Hlj5jliqjor7fmsYLku43mnKrlrqHmibnvvIzop4bkuLrigJzlrqHmibnmnKrpgJrov4figJ3vvIzlsIbmnKzor7fmsYLkuI7otYTph5HmmI7nu4bkuIDotbfnva7kuLrlpLHotKUKICAgICAgICAgICAgNOOAgeS6pOaYk+ezu+e7n+WPquiDveWkhOeQhuacrOKAnOS6pOaYk+aXpeKAneiMg+WbtOWGheeahOivt+axgg=="/>
+      <column name="RESULT_CODE" sqlType="CHAR" precision="5" scale="0" nullable="true" jdbcType="1" remarks="5ZON5bqU56CB"/>
+      <column name="RESULT_MSG" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aSE55CG57uT5p6c5o+P6L+w"/>
+      <primary-key name="PRIMARY" columns="SERIAL_NO"/>
+    </table>
+    <table name="OMS_TRANS_FEE_PARAM" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="umbrella_trust_no" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="trade_fee_fade" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="trade_base_fee" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="trans_service_fee" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="trans_base_service_fee" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="update_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="version" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TT_TRADE_UNIT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD57yW5Y+3"/>
+      <column name="UNIT_NAME" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD5ZCN56ew"/>
+      <column name="BEGINNING_SCALE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5pyf5Yid6KeE5qih"/>
+      <column name="TOTAL_ASSETS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5oC76LWE5LqnIOWNleWFg+aAu+i1hOS6pz3lj6/nlKjotYTph5Er5Lmw5YWl5Ya757uTK+ivgeWIuOW4guWAvA=="/>
+      <column name="AVAIL_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Y2V5YWD5Y+v55So6LWE6YeRPeWuouaIt+WPr+eUqOi1hOmHkSvpl7Lnva7otYTph5E="/>
+      <column name="BUY_FROZEN" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Lmw5YWl5Ya757uT"/>
+      <column name="MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6K+B5Yi45biC5YC8IOWNleWFg+ivgeWIuOW4guWAvD3oh6rokKXluILlgLwr5a6i5oi35biC5YC8"/>
+      <column name="SELF_MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6Ieq6JCl6K+B5Yi45biC5YC8IOWGhemDqOi0puaIt+W4guWAvA=="/>
+      <column name="CUST_MARKET_VALUE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5a6i5oi36K+B5Yi45biC5YC8IOWuouaIt+S6pOaYk+i0puaIt+ivgeWIuOW4guWAvA=="/>
+      <column name="CUST_AVAIL_FUNDS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5a6i5oi35Y+v55So6LWE6YeRIOWuouaIt+S6pOaYk+i0puaIt+WPr+eUqOi1hOmHkQ=="/>
+      <column name="IDLE_FUNDS" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6Zey572u6LWE6YeR"/>
+      <column name="IDLE_FUNDS_RATE" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="6Zey572u6LWE6YeR546H"/>
+      <column name="FUND_UTILIZATION_RATE" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="6LWE6YeR5L2/55So546H"/>
+      <column name="OVERFLOW_RATIO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5rqi5Ye65q+U5L6LIOenpuWGsOaPkOS+m+WFrOW8j++8jOacgOmrmOWPr+a6ouWHuuavlOS+iw=="/>
+      <column name="UNIT_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Y2V5YWD57G75Z6LIDEt5Lye5b2i5Y2V5YWDIDIt54us56uL5Y2V5YWD"/>
+      <column name="TRUST_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lye5b2i5L+h5omY57yW5Y+3"/>
+      <column name="BEGIN_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5Y2V5YWD5byA5aeL5pel5pyf"/>
+      <column name="END_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5Y2V5YWD57uT5p2f5pel5pyf"/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+      <column name="VER_NO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="54mI5pys5Y+3"/>
+      <column name="PID" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5aSH55So5Li76ZSu"/>
+      <column name="PROCESS_INSTANCE_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="5rWB56iL5a6e5L6LSUQ="/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_TT_UNIT_FUND_FLOW" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="SUQ="/>
+      <column name="TRUST_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lye5b2i5L+h5omY57yW5Y+3IOS8nuW9ouWNleWFg+aJjeacieivpeWtl+auteWAvA=="/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5Lqk5piT5Y2V5YWD57yW5Y+3"/>
+      <column name="FLOW_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Y2V5YWD6LWE6YeR5Y+Y5Yqo77yaMS3ljZXlhYPotYTph5Hov73liqDjgIEyLeWNleWFg+i1hOmHkeaUtuWbnu+8iOmcgOimgeWkjeaguO+8iQ=="/>
+      <column name="OCCUR_AMT" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="5Y+R55Sf6aKdICDov73liqDvvIjmraPlgLzvvInvvJvmlLblm57vvIjotJ/lgLzvvIk="/>
+      <column name="OCCUR_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="5Lia5Yqh5Y+R55Sf5pel5pyf"/>
+      <column name="REMARK" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="5aSH5rOo"/>
+      <column name="FOUND_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu65pe26Ze0"/>
+      <column name="PID" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PROCESS_INSTANCE_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="5rWB56iL5a6e5L6LSUQ="/>
+      <column name="LAST_OPER_TIME" sqlType="VARCHAR" precision="14" scale="0" nullable="true" jdbcType="12" remarks="5pyA6L+R5pu05paw5pe26Ze0"/>
+    </table>
+    <table name="OMS_UNIT_ASSET_INFORMATION" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="KYS" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MRDJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RQJC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="JKDJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQSZ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZZC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CCCB" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FDYK" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SXYK" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZYK" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATE_TIME" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_UNIT_ASSET_INFORMATION_SNAPSHOT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="KYS" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MRDJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="RQJC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="JKDJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQSZ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZZC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CCCB" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FDYK" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SXYK" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZYK" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATE_TIME" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_UNIT_DIFFERENCE" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="FUNDS_DIFFERENCE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6LWE6YeR5beu5byC"/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="18" scale="0" nullable="true" jdbcType="12" remarks="5Y2V5YWD5Y+3"/>
+      <column name="CREATE_TIME" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5Yib5bu65pel5pyf"/>
+      <column name="STOCK_DIFFERENCE" sqlType="DECIMAL" precision="18" scale="2" nullable="true" jdbcType="3" remarks="6IKh5Lu95beu5byC"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_UNIT_STOCK_INFORMATION" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="KYS" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MRDJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MCDJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CCSL" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQSZ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CCCB" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FDYK" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATE_TIME" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMS_UNIT_STOCK_INFORMATION_SNAPSHOT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="UNIT_NO" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="KYS" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MRDJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="MCDJ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CCSL" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQSZ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CCCB" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FDYK" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATE_TIME" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMT_DELIVERY_ORDER" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="WTRQ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="YWMC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQDM" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQMC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJJG" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJSL" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJJE" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="QSJE" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="YHS" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SXF" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GHF" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJBH" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATE_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMT_DELIVERY_ORDER_SNAPSHOT" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="WTRQ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="YWMC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQDM" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ZQMC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJJG" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJSL" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJJE" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="QSJE" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="YHS" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SXF" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="GHF" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CJBH" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CREATE_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="OMT_NO_CUSTMOER" schema="" catalog="OMS" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" remarks="SUQ="/>
+      <column name="WTRQ" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5aeU5omY5pel5pyf"/>
+      <column name="YWMC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5Lia5Yqh5ZCN56ew"/>
+      <column name="ZQDM" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="6K+B5Yi45Luj56CB"/>
+      <column name="ZQMC" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="6K+B5Yi45ZCN56ew"/>
+      <column name="CJJG" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5oiQ5Lqk5Lu35qC8"/>
+      <column name="CJSL" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5oiQ5Lqk5pWw6YeP"/>
+      <column name="CJJE" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5oiQ5Lqk6YeR6aKd"/>
+      <column name="QSJE" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5riF566X6YeR6aKd"/>
+      <column name="YHS" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5Y2w6Iqx56iO"/>
+      <column name="SXF" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5omL57ut6LS5"/>
+      <column name="GHF" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="6L+H5oi36LS5"/>
+      <column name="CJBH" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="5oiQ5Lqk57yW5Y+3"/>
+      <column name="CREATE_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93" remarks="5Yib5bu65pel5pyf"/>
+      <primary-key name="PRIMARY" columns="ID"/>
+    </table>
+    <table name="P_MULTI_CODE" schema="" catalog="OMS" type="TABLE">
+      <column name="CODE_TYPE" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="CODE" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8="/>
+      <column name="CODE_NAME" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz8/Pw=="/>
+      <column name="CODE_DESC" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz8/Pw=="/>
+      <column name="DATA_SOURCE" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="Pz8/Pw=="/>
+    </table>
+    <table name="P_STAFF_BASE_INFO" schema="" catalog="OMS" type="TABLE">
+      <column name="staff_sn" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="staff_name" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sex" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="id_no" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="political" sqlType="CHAR" precision="2" scale="0" nullable="true" jdbcType="1"/>
+      <column name="birth_date" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <column name="nation" sqlType="CHAR" precision="2" scale="0" nullable="true" jdbcType="1"/>
+      <column name="begin_work_date" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <column name="join_us_date" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <column name="work_phone" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cell_phone" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="128" scale="0" nullable="true" jdbcType="12"/>
+      <column name="is_cust_manager" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="post_level" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="bank_staff_level" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="emergency_phone" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="emergency_contact_people" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="into_financial_sys_date" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <column name="cust_manager_work_years" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="staff_type_code_one" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="staff_type_code" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="post_name" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="at_bank_no" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="at_dep_no" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="manage_bank_no" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="manage_end_date" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <column name="duty_type" sqlType="CHAR" precision="2" scale="0" nullable="true" jdbcType="1"/>
+      <column name="manage_dep_no" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="top_edu_code" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="top_edu_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="top_degree_code" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="top_degree_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title_level_code" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title_level_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title_code" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="start_work_date" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <column name="resign_date" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <column name="staff_no" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="post_code" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="manage_bank_type" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="manage_dep_type" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="cust_manager_level" sqlType="VARCHAR" precision="6" scale="0" nullable="true" jdbcType="12"/>
+      <column name="marry_status" sqlType="VARCHAR" precision="6" scale="0" nullable="true" jdbcType="12"/>
+      <column name="org_no" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="org_sup_no" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="staff_sn"/>
+    </table>
+    <table name="SYS_BIZ_PARAM" schema="" catalog="OMS" type="TABLE">
+      <column name="PARAM_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="PARAM_NAME" sqlType="VARCHAR" precision="120" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="PARAM_TYPE" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="PARAM_SCOPE" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz8/Pz8="/>
+      <column name="PARAM_VALUE" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1" remarks="Pz8/"/>
+      <column name="PARAM_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="PARAM_DESC" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz8/Pw=="/>
+      <column name="PARAM_SYS_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="PARAM_READONLY_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <primary-key name="PRIMARY" columns="PARAM_ID"/>
+    </table>
+    <table name="SYS_BIZ_SERIAL" schema="" catalog="OMS" type="TABLE">
+      <column name="BIZ_KEY" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/"/>
+      <column name="BIZ_NAME" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="BIZ_SERIAL_NO" sqlType="DECIMAL" precision="18" scale="0" nullable="true" jdbcType="3" remarks="Pz8/Pz8/Pz8x"/>
+      <column name="BIZ_PREFIX" sqlType="VARCHAR" precision="36" scale="0" nullable="true" jdbcType="12" remarks="Pz8="/>
+      <column name="BIZ_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <column name="IS_APPEND" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pz8/PzA/Pz8xPz8="/>
+      <column name="SERIAL_NUM" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8/Pz8="/>
+      <column name="BIZ_REMARK" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz8/Pw=="/>
+      <primary-key name="PRIMARY" columns="BIZ_KEY"/>
+    </table>
+    <table name="SYS_SEC_AUDIT_LOG" schema="" catalog="OMS" type="TABLE">
+      <column name="audit_log_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_id" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ip_address" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="resource_id" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="resource_name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="resource_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="oper" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="oper_status" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="oper_remark" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="oper_date" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="oper_time" sqlType="CHAR" precision="6" scale="0" nullable="false" jdbcType="1"/>
+      <column name="service_id" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="SYS_SEC_AUDIT_RESOURCE" schema="" catalog="OMS" type="TABLE">
+      <column name="RESOURCE_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <primary-key name="PRIMARY" columns="RESOURCE_ID"/>
+    </table>
+    <table name="SYS_SEC_FAVORITE" schema="" catalog="OMS" type="TABLE">
+      <column name="MENU_CODE" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="USER_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <primary-key name="PRIMARY" columns="MENU_CODE,USER_ID"/>
+    </table>
+    <table name="SYS_SEC_MENU" schema="" catalog="OMS" type="TABLE">
+      <column name="MENU_CODE" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="ROOT_MENU_CODE" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pz8="/>
+      <column name="PARENT_CODE" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pz8="/>
+      <column name="MENU_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pz8w57O757uf6buY6K6kIDHmmL7npLogMuS4jeaYvuekug=="/>
+      <column name="MENU_NAME" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="MENU_LEVEL" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8/Pw=="/>
+      <column name="RESOURCE_CODE" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="MENU_URL" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz9VUkw="/>
+      <column name="SEC_ORDER" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8="/>
+      <column name="SEC_ENABLED" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pz8/Pz8/Pw=="/>
+      <column name="SEC_SYS_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="SEC_READONLY_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="CREATE_DATE" sqlType="CHAR" precision="8" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="CREATE_TIME" sqlType="CHAR" precision="6" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="VERSION_" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8="/>
+      <primary-key name="PRIMARY" columns="MENU_CODE"/>
+    </table>
+    <table name="SYS_SEC_ORG" schema="" catalog="OMS" type="TABLE">
+      <column name="ORG_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="ROOT_ORG_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/"/>
+      <column name="UP_ORG_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="ROOT_BR_ORG_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="Pz8/Pz8/"/>
+      <column name="ORG_NAME" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz8/Pw=="/>
+      <column name="ORG_CODE" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz8/Pw=="/>
+      <column name="ORG_DESC" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="ORG_LEVEL" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8/Pw=="/>
+      <column name="ORG_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="SEC_ORDER" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8="/>
+      <column name="SEC_ENABLED" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="SEC_SYS_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="SEC_READONLY_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="SEC_DELETE_FLAG" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8/Pw=="/>
+      <column name="VERSION_" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8/Pw=="/>
+      <column name="CREATE_DATE" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="CREATE_TIME" sqlType="CHAR" precision="6" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="ORG_OR_DEP_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="5Zu+5qCHIDHkuIDnuqcgMiDkuoznuqc="/>
+      <column name="ORG_LEVEL_TYPE" sqlType="VARCHAR" precision="6" scale="0" nullable="true" jdbcType="12" remarks="Pz8/Pz8/"/>
+      <column name="ORG_DATA_SOURCE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pw=="/>
+      <primary-key name="PRIMARY" columns="ORG_ID"/>
+    </table>
+    <table name="SYS_SEC_ORGLVL_MENU" schema="" catalog="OMS" type="TABLE">
+      <column name="ORG_LEVEL" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8/PyAgIDEgPz8gPyAyID8/IDMgPz8="/>
+      <column name="MENU_CODE" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <primary-key name="PRIMARY" columns="ORG_LEVEL,MENU_CODE"/>
+    </table>
+    <table name="SYS_SEC_ORGLVL_RESOURCE" schema="" catalog="OMS" type="TABLE">
+      <column name="org_level" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <column name="resource_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="org_level,resource_id"/>
+    </table>
+    <table name="SYS_SEC_ORGLVL_RESOURCE_C" schema="" catalog="OMS" type="TABLE">
+      <column name="org_level" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <column name="resource_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="org_level,resource_id"/>
+    </table>
+    <table name="SYS_SEC_ORG_TEMP" schema="" catalog="OMS" type="TABLE">
+      <column name="ORG_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="ROOT_ORG_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/"/>
+      <column name="UP_ORG_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="ROOT_BR_ORG_ID" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="Pz8/Pz8/"/>
+      <column name="ORG_NAME" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz8/Pw=="/>
+      <column name="ORG_CODE" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" remarks="Pz8/Pw=="/>
+      <column name="ORG_DESC" sqlType="VARCHAR" precision="80" scale="0" nullable="true" jdbcType="12" remarks="Pz8/Pw=="/>
+      <column name="ORG_LEVEL" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8/Pw=="/>
+      <column name="ORG_TYPE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="SEC_ORDER" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8="/>
+      <column name="SEC_ENABLED" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="SEC_SYS_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="SEC_READONLY_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="SEC_DELETE_FLAG" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8/Pw=="/>
+      <column name="VERSION_" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3" remarks="Pz8/Pw=="/>
+      <column name="CREATE_DATE" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="CREATE_TIME" sqlType="CHAR" precision="6" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pw=="/>
+      <column name="ORG_OR_DEP_FLAG" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pz8/"/>
+      <column name="ORG_LEVEL_TYPE" sqlType="CHAR" precision="2" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pz8/"/>
+      <column name="ORG_DATA_SOURCE" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1" remarks="Pz8/Pw=="/>
+      <primary-key name="PRIMARY" columns="ORG_ID"/>
+    </table>
+    <table name="SYS_SEC_RESOURCE" schema="" catalog="OMS" type="TABLE">
+      <column name="resource_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="menu_code" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="resource_name" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="resource_type" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="resource_url" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="resource_group" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sec_order" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <column name="sec_enabled" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="sec_sys_flag" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="sec_readonly_flag" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="sec_delete_flag" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <column name="version_" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <column name="create_date" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="create_time" sqlType="CHAR" precision="6" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="resource_id"/>
+      <index name="I_S_S_R_RESOURCE_NAME" unique="true" columns="resource_name"/>
+      <index name="I_S_S_R_RESOURCE_URL" unique="true" columns="resource_url"/>
+    </table>
+    <table name="SYS_SEC_ROLE" schema="" catalog="OMS" type="TABLE">
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="org_id" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12"/>
+      <column name="org_level_type" sqlType="CHAR" precision="2" scale="0" nullable="true" jdbcType="1"/>
+      <column name="data_authority" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <column name="role_name" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="role_desc" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sec_order" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <column name="sec_enabled" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="sec_sys_flag" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="sec_readonly_flag" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="sec_delete_flag" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <column name="create_date" sqlType="CHAR" precision="8" scale="0" nullable="false" jdbcType="1"/>
+      <column name="create_time" sqlType="CHAR" precision="6" scale="0" nullable="false" jdbcType="1"/>
+      <column name="version_" sqlType="DECIMAL" precision="11" scale="0" nullable="false" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="role_id"/>
+    </table>
+    <table name="SYS_SEC_ROLE_MENU" schema="" catalog="OMS" type="TABLE">
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="menu_code" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="role_id,menu_code"/>
+    </table>
+    <table name="SYS_SEC_ROLE_RESOURCE" schema="" catalog="OMS" type="TABLE">
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="resource_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="role_id,resource_id"/>
+    </table>
+    <table name="SYS_SEC_USER_ROLE" schema="" catalog="OMS" type="TABLE">
+      <column name="user_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <column name="role_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="user_id,role_id"/>
+    </table>
+    <table name="sys_dictionary" schema="" catalog="OMS" type="TABLE">
+      <column name="dic_id" sqlType="VARCHAR" precision="32" scale="0" nullable="false" jdbcType="12" remarks="5a2X5YW4SUQ="/>
+      <column name="dic_name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12" remarks="5a2X5YW45ZCN5a2X"/>
+      <column name="dic_value" sqlType="VARCHAR" precision="300" scale="0" nullable="true" jdbcType="12" remarks="5a2X5YW45YC8"/>
+      <column name="dic_group" sqlType="VARCHAR" precision="60" scale="0" nullable="true" jdbcType="12" remarks="5a2X5YW45YiG57uE"/>
+      <column name="dic_type" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5a2X5YW457G75Z6L"/>
+      <column name="dic_order" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5a2X5YW45o6S5bqP"/>
+      <column name="dic_status" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12" remarks="5a2X5YW454q25oCB"/>
+      <column name="dic_parent_id" sqlType="VARCHAR" precision="32" scale="0" nullable="true" jdbcType="12" remarks="54i26IqC54K5SUQ="/>
+      <primary-key name="PRIMARY" columns="dic_id"/>
+    </table>
+  </data-source>
+</component>
